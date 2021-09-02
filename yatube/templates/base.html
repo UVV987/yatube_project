@@ -15,11 +15,13 @@
     <meta name="theme-color" content="#ffffff">
     <!-- Подключен файл со стандартными стилями бустрап -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
     <header>{% include 'includes/header.html' %}</header>
     <main>
+
+        {% block title %}{% endblock %}
+
       <!-- класс py-5 создает отступы сверху и снизу блока -->
       <div class="container py-5">
         {% block content %}{% endblock %}
@@ -27,4 +29,4 @@
     </main>
     <footer>{% include 'includes/footer.html' %}</footer>
   </body>
-</html>
+</html>  

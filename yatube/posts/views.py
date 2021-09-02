@@ -1,8 +1,7 @@
-from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Post
+from .models import Group
 
-# Create your views here.
 def index(request):
     posts = Post.objects.order_by('-pub_date')[:10]
     context = {
@@ -12,11 +11,10 @@ def index(request):
 
 
 def group_posts(request, slug):
-    template = 'posts/group_list.html'
-    title = 'Yatube'
+    group = get_object_or_404(Group, slug=slug)
+    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
     context = {
-        'title': title,
-        'text': 'Здесь будет информация о группах проекта Yatube'
+        'group': group,
+        'posts': posts,
     }
-    return render(request, template, context)
-
+    return render(request, 'posts/group_list.html', context) 
