@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
-
 {% load static %}
 <!DOCTYPE html> <!-- Используется html 5 версии -->
 <html lang="ru"> <!-- Язык сайта - русский -->
-  <head>    
+  <head>
     <meta charset="utf-8"> <!-- Кодировка сайта -->
     <!-- Сайт готов работать с мобильными устройствами -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,7 +20,7 @@
   <body>
     <header>
       <!-- Использованы классы бустрапа для создания типовой навигации с логотипом -->
-      <!-- В дальнейшем тут будет создано полноценное меню -->    
+      <!-- В дальнейшем тут будет создано полноценное меню -->
       <nav class="navbar navbar-light" style="background-color: lightskyblue">
         <div class="container">
           <!-- ссылка должна вести на главную страницу -->
@@ -31,19 +30,19 @@
             <span style="color:red">Ya</span>tube
           </a>
         </div>
-      </nav>      
+      </nav>
     </header>
     <main>
       <!-- класс py-5 создает отступы сверху и снизу блока -->
       {%block title%}
-      
+
          <h1> Записи сообщества: {{ group.title }} </h1>
          <h3> {{ group.description }} </h3>
 
       {%endblock%}
 
       {%block content%}
-      {% for post in posts %}        
+      {% for post in posts %}
         <article>
           <ul>
             <li>
@@ -52,20 +51,20 @@
             <li>
               Дата публикации: {{ post.pub_date|date:"d M Y" }}
             </li>
-          </ul>      
+          </ul>
           <p>
             {{post.text}}
-          </p>         
+          </p>
         </article>
         {% if not forloop.last %} <hr> {% endif %} {% endfor %}
-      {%endblock%}  
+      {%endblock%}
     </main>
     <!-- Использованы классы бустрапа: -->
     <!-- border-top: создаёт тонкую линию сверху блока -->
     <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
-    <!-- py-3: контент внутри размещается с отсупом сверху и снизу -->         
+    <!-- py-3: контент внутри размещается с отсупом сверху и снизу -->
     <footer class="border-top text-center py-3">
-      <p>© 2020 Copyright <span style="color:red">Ya</span>tube</p> 
+      <p>© 2020 Copyright <span style="color:red">Ya</span>tube</p>
     </footer>
   </body>
-</html>  
+</html>
